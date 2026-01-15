@@ -1,0 +1,71 @@
+.container{
+    width: 100% !important;
+    margin: 0;
+}
+
+.error-message {
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.is-invalid {
+    border-color: #dc3545;
+}
+
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Header/Navbar Styles - AdminLTE inspired */
+.navbar {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,.08);
+}
+
+.navbar-brand {
+    color: #6c757d !important;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.navbar-brand:hover {
+    color: #495057 !important;
+}
+
+.navbar-brand i {
+    color: #6c757d;
+}
+
+.navbar-toggler {
+    border-color: #6c757d;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%236c757d' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.nav-link {
+    color: #6c757d !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #495057 !important;
+    background-color: #f8f9fa;
+}
+
+thead {
+    background-color: #f1f3f5;
+}
+
+.table-hover tbody tr:hover{
+    background-color: #f8f9fa;
+}
+
+

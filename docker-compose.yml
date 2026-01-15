@@ -1,0 +1,67 @@
+services:
+    app:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+            args:
+                user: mateus
+                uid: 1000
+        image: laravel
+        container_name: laravel
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+        networks:
+            - backend
+        #depends_on:
+            #db:
+                #condition: service_healthy
+
+    #db:
+    #    image: mysql:8.0
+    #    container_name: mysql
+    #    restart: unless-stopped
+    #    tty: true
+    #    environment:
+    #        MYSQL_DATABASE: ${DB_DATABASE}
+    #        MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    #        MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    #        MYSQL_PASSWORD: ${DB_PASSWORD}
+    #        MYSQL_USER: "admin"
+    #        SERVICE_TAGS: dev
+    #        SERVICE_NAME: mysql
+    #        MYSQL_ROOT_HOST: "%"
+    #    ports:
+    #        - "${DB_EXTERNAL_PORT}:3306"
+    #    networks:
+    #        - backend
+    #    healthcheck:
+    #        test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
+    #        interval: 5s
+    #        timeout: 10s
+    #        retries: 3
+
+    nginx:
+        build:
+            context: ./docker/nginx
+            dockerfile: Dockerfile
+        container_name: nginx
+        restart: unless-stopped
+        ports:
+            - "8800:80"
+        volumes:
+            - ./:/var/www
+            - ./docker/nginx:/etc/nginx/conf.d
+        networks:
+            - backend
+        depends_on:
+            - app
+
+networks:
+    backend:
+        driver: bridge
+
+#volumes:
+#  mysql-data:
+#    driver: local
